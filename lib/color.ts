@@ -33,7 +33,11 @@ export class Color {
   constructor(R: number, G: number, B: number) {
     // r 0-255, g 0-255, b 0-255,
     this.colorUtil = new ColorUtil();
-    if (typeof R != 'number' || typeof G != 'number' || typeof B != 'number') {
+    if (
+      typeof R !== 'number' ||
+      typeof G !== 'number' ||
+      typeof B !== 'number'
+    ) {
       this.rgbValues = [255, 255, 255];
       this.hexValue = '#ffffff';
     } else {
@@ -59,7 +63,11 @@ export class Color {
    */
 
   private _generateColorParameters(R?: number, G?: number, B?: number) {
-    if (typeof R != 'number' || typeof G != 'number' || typeof B != 'number') {
+    if (
+      typeof R !== 'number' ||
+      typeof G !== 'number' ||
+      typeof B !== 'number'
+    ) {
       throw new Error('Invalid RGB values provided');
     }
     [this.sR, this.sG, this.sB] = this.colorUtil.sRGB(R, G, B);

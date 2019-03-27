@@ -3,8 +3,6 @@
  * @public
  */
 export class ColorUtil {
-  constructor() {}
-
   /**
    * converts RGB to sRGB values
    * @param R - Red value for the color
@@ -13,7 +11,11 @@ export class ColorUtil {
    * @returns [R/255, G/255, B/255]
    */
   sRGB(R: number, G: number, B: number): number[] {
-    if (typeof R != 'number' || typeof G != 'number' || typeof B != 'number') {
+    if (
+      typeof R !== 'number' ||
+      typeof G !== 'number' ||
+      typeof B !== 'number'
+    ) {
       throw new Error('Invalid value provided in sRGG method');
     }
     return [R / 255.0, G / 255.0, B / 255.0];
@@ -110,7 +112,7 @@ export class ColorUtil {
   }
 
   hexToRGB(hex: string) {
-    if (!hex || typeof hex != 'string') {
+    if (!hex || typeof hex !== 'string') {
       throw new Error('Invalid hex');
     }
     const hexValue = hex.trim().split('#')[1];
