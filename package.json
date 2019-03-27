@@ -1,0 +1,45 @@
+{
+  "name": "colorjs",
+  "version": "1.0.0",
+  "repository": "https://github.com/rsirs/colorjs.git",
+  "author": "rsirs",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/index.js",
+  "typings": "typings/index-rollup.d.ts",
+  "tsdoc": {
+    "tsdocFlavor": "AEDoc"
+  },
+  "keywords": [
+    "colorjs",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=8.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "npm-run-all -p lint:*",
+    "lint:ts": "tslint -p tsconfig.json --fix",
+    "lint:checkprettify": "prettier -l \"**/*.*(ts|json|md)\"",
+    "prettify": "prettier --write \"**/*.*(ts|json|md)\"",
+    "apiextractor": "api-extractor run",
+    "typings": "tsc -p tsconfig.json --emitDeclarationOnly --outDir typings",
+    "docs": "npm run typings && npm run apiextractor && api-documenter markdown  --input-folder ./dist --output-folder docs",
+    "ci": "npm run docs && npm run build && cp -rp ./{package.json,typings} dist"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^6.3.0",
+    "husky": "^1.3.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000"
+  }
+}
